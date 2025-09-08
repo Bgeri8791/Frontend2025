@@ -2,9 +2,7 @@
 import Components from 'unplugin-vue-components/vite'
 import Vue from '@vitejs/plugin-vue'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-import Fonts from 'unplugin-fonts/vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
-import VueRouter from 'unplugin-vue-router/vite'
 // Utilities
 import { defineConfig, loadEnv } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
@@ -21,25 +19,10 @@ export default ({ mode }) => {
       Vuetify(),
       VueDevTools(),
       Components(),
-      VueRouter({
-        importMode: 'async'
-      }),
-      Fonts({
-        fontsource: {
-          families: [
-            {
-              name: 'Roboto',
-              weights: [100, 300, 400, 500, 700, 900],
-              styles: ['normal', 'italic'],
-            },
-          ],
-        },
-      }),
     ],
     optimizeDeps: {
       exclude: ['vuetify'],
     },
-    define: { 'process.env': {} },
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
