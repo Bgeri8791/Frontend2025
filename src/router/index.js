@@ -1,10 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { setTitle } from '@/router/guards/SetTitleGuard.mjs'
-import { routes } from 'vue-router/auto-routes'
 
-export const router = createRouter({
+// komponensek importálása
+import HomeView from '@pages/HomeView.vue'
+import AboutView from '@pages/AboutView.vue'
+
+const routes = [
+  { path: '/', name: 'Home', component: HomeView },
+  { path: '/about', name: 'About', component: AboutView },
+]
+
+const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
-router.beforeEach(setTitle)
+export default router
